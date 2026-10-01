@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- レビュー演習用。search(prefecture) の prefecture は検索画面の入力値がそのまま渡ってくる -->
+<mapper namespace="com.example.vehicletax.domain.repository.VehicleRepository">
+
+    <select id="findByPrefecture" resultType="Vehicle">
+        SELECT * FROM vehicle WHERE prefecture = '${prefecture}'
+    </select>
+
+    <update id="updatePaid">
+        UPDATE vehicle SET paid = true
+        <where>
+            <if test="vehicleId != null">
+                vehicle_id = #{vehicleId}
+            </if>
+        </where>
+    </update>
+
+</mapper>
