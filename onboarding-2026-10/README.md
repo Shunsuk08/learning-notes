@@ -13,14 +13,16 @@
 
 | 日 | 時間 | 座学 | 手を動かす |
 |---|---|---|---|
-| 10/1 木 | 電車・隙間時間 | **座学のみ**: day1 §0 サブリーダーの役割 → §1 結合・総合試験推進 → §2 品質管理 → §3 進捗・課題管理 → day2 §4 仕様調整 → §6 真因分析（計160分、分割してよい） | なし |
-| 10/2 金 | 6時間 | なし（前日に終わらなければ朝に続きを読む） | **手を動かすだけ**: day1 午後A 手順1〜6（環境構築〜起動〜読んでレイヤ図、100分）→ day1 午後B 基本文法ドリル（30分）→ day2 Todoアプリ（インメモリ版、140分） |
+| 10/1 木 | 電車・隙間時間 | **座学のみ**: ① day1 §0 → [サブリーダー実例ケース集](reading/01-subleader-cases.md) ② [工数・人月とタスク管理](reading/02-effort-and-task-management.md)（計算クイズ12問）③ day1 §1・§2 → [テスト設計の読み物](reading/03-test-design.md)（異常系・非機能）。分割してよい | なし |
+| 10/2 金 | 6時間 | 朝か移動中に: day1 §3 進捗・課題管理 → day2 §4 仕様調整 → §6 真因分析（80分）。10/1の残りがあれば先に | **手を動かす**: day1 午後A 手順1〜6（環境構築〜起動〜読んでレイヤ図、100分）→ day1 午後B 基本文法ドリル（30分）→ day2 Todoアプリ（インメモリ版、140分） |
 | 10/3 土 | 6時間 | day3 §9〜§14（TERASOLUNA・Spring・MyBatis・Security） | day3 Stream・Optionalドリル → MyBatis3版に作り直す |
 | 10/4 日 | 16時まで | day4 §15〜§17（レビュー観点・JUnit）→ day2 §5 静的解析 → day2 §7・8（[copilot-playbook](copilot-playbook.md)） | day4 レビュー演習 → JUnit → 初週の計画 |
 
 **項目18〜22（Linux・移行・切替・DR）は参画後に回した。** 結合試験フェーズの最初の週には使う場面が少なく、読み物として平日の受動学習に向くため（[after-10-5.md](after-10-5.md)）。土日に時間が余ったら、day4 §18〜§22 を前倒しで読む。
 
 教材: [day1](day1-subleader-and-setup.md) / [day2](day2-spec-analysis-copilot.md) / [day3](day3-framework-mybatis.md) / [day4](day4-review-infra-first-week.md)
+
+読み物（具体例・クイズで深掘り）: [01 サブリーダー実例ケース集](reading/01-subleader-cases.md) / [02 工数・人月とタスク管理](reading/02-effort-and-task-management.md) / [03 テスト設計（異常系・非機能）](reading/03-test-design.md)
 
 参画後の計画: [after-10-5.md](after-10-5.md)
 
