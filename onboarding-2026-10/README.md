@@ -28,6 +28,8 @@
 
 22項目それぞれ「会社が何を期待しているか」の一覧と、項目ごとの進捗チェックリスト: [customer-priorities-and-progress.md](customer-priorities-and-progress.md)
 
+項目1の深掘りハンズオン（試験仕様書の標準フォーマット＋実際に手を動かして試験する）: [hands-on-01-test-spec-and-execution.md](hands-on-01-test-spec-and-execution.md)
+
 ## 不安ごとの対策
 
 | 不安 | 4日間でやること | 参画後 |

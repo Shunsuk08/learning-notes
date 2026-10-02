@@ -44,6 +44,7 @@
 
 > 会社資料の教材: 『ソフトウェアテスト技法ドリル』『基礎から学ぶソフトウェアテスト』、JSTQB Foundationシラバス
 > **書籍の代わり**: 下の要約 ＋ [JSTQB Foundation Level シラバス 日本語版（無料PDF）](https://jstqb.jp/dl/JSTQB-SyllabusFoundation_VersionV40.J02.pdf) の「テストレベル」「テストの管理」の章だけ
+> **ハンズオン（試験仕様書の標準フォーマット＋実際に手を動かして試験する）**: [hands-on-01-test-spec-and-execution.md](hands-on-01-test-spec-and-execution.md)
 
 ### 試験の種類（何を確かめるか）
 
