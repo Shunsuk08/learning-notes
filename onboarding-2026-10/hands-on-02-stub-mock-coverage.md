@@ -94,12 +94,14 @@ java CoverageDrill.java
 
 ### 2-1. 準備
 
-Mavenが要る。**環境構築の手順・ハマりどころ・検証済みバージョンは [exercises/test-drill/SETUP.md](exercises/test-drill/SETUP.md) にまとめてある**（brewが終わらないときの回避策、Mockitoのエージェント指定、カバレッジが0%になる罠など）。
+**Mavenのインストールは不要**。プロジェクトに `mvnw`（Maven Wrapper）を同梱してあるので、JDKだけで動く。
 
 ```bash
-brew install maven     # 時間がかかる場合あり。終わらないならSETUP.mdの②へ
-mvn -v
+cd ~/git/learning-notes/onboarding-2026-10/exercises/test-drill/with-tools
+./mvnw test
 ```
+
+環境の詳細・ハマりどころ・検証済みバージョンは [exercises/test-drill/SETUP.md](exercises/test-drill/SETUP.md)（Mockitoのエージェント指定、カバレッジが0%になる罠、brewの注意点など）。
 
 ### 2-2. 実行
 

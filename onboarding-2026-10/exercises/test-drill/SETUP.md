@@ -10,7 +10,7 @@
 > | マシン | macOS 15.7.7 / **x86_64（Intel）** |
 > | JDK | **25.0.1** (Oracle, x86_64) — `/Library/Java/JavaVirtualMachines/jdk-25.jdk` の1つだけ |
 > | Homebrew | `/usr/local`（Intel版の配置） |
-> | Maven | **PATHには無い**。studymate-aiが使うラッパーが `~/.m2/` に存在 |
+> | Maven | **PATHには無い**（`brew install maven` は未完了）。演習は同梱の `./mvnw` で動く |
 > | ローカルリポジトリ | `~/.m2/repository` に 283MB（studymate-aiの分が既にある） |
 
 ---
@@ -34,23 +34,41 @@ Mavenが必要になるのは Phase2（JUnit5 + Mockito + JaCoCo）から。
 
 | 方法 | コマンド | 向いている場面 | 注意 |
 |---|---|---|---|
-| ① Homebrew | `brew install maven` | 普段使い。どのディレクトリでも `mvn` が使える | **依存のビルドで時間がかかることがある**（下記） |
-| ② 既存のラッパーを直接呼ぶ | `~/.m2/wrapper/dists/apache-maven-3.9.16/56ba1f9f/bin/mvn` | すぐ試したいとき | パスが長い。バージョンは既存プロジェクト任せ |
-| ③ プロジェクトに mvnw を置く | `./mvnw test` | チーム開発（全員が同じMaven版になる） | プロジェクトごとに必要 |
+| **① 同梱の mvnw を使う（推奨）** | `./mvnw test` | **この演習はこれで足りる**。JDKさえあれば動く | このプロジェクト専用 |
+| ② 既存のラッパーを直接呼ぶ | `~/.m2/wrapper/dists/apache-maven-3.9.16/56ba1f9f/bin/mvn` | 他のプロジェクトでも使いたいとき | パスが長い |
+| ③ Homebrew | `brew install maven` | どのディレクトリでも `mvn` を使いたい（day1のTERASOLUNA生成など） | **時間がかかる＋JDKがもう1つ入る**（下記） |
 
-### ① brew が終わらないとき
-
-2026-10-02の実行では、`brew install maven` が依存（gettext等）を**ソースからビルド**し始めて10分以上かかった。
-Intel Mac（`/usr/local/Homebrew`）ではビルド済みパッケージが用意されていない場合があるため。
-
-**待っている間に止まらなくていい**。②の方法で先に進める。
+### ① mvnw（Maven Wrapper）— このプロジェクトに同梱済み
 
 ```bash
-# 進捗を見る
-ps aux | grep "brew.rb install maven" | grep -v grep
+cd ~/git/learning-notes/onboarding-2026-10/exercises/test-drill/with-tools
+./mvnw test
 ```
 
-### ② 既存ラッパーを使う（今回これで検証した）
+Mavenのインストールは不要。初回だけ指定バージョン（3.9.16）を `~/.m2/wrapper/` に取得して使う。
+**Maven本体のバージョンがリポジトリに固定されるので、再現性の点ではこれが一番強い**（他のマシンでも同じ結果になる）。
+`mvnw` / `mvnw.cmd` / `.mvn/wrapper/maven-wrapper.properties` がその仕組み。**`./mvnw test` の動作確認済み**。
+
+### ③ brew の注意（2026-10-02に実際に起きたこと）
+
+`brew install maven` を実行したが、**完了しなかった**。出力の最後は:
+
+```
+==> Installing maven dependency: openjdk
+```
+
+ここで止まっており、`brew list maven` は `Error: No such keg` を返した（＝未インストール）。
+
+2つ知っておくこと:
+
+1. **時間がかかる**: Intel Mac（`/usr/local/Homebrew`）では依存（gettext等）を**ソースからビルド**することがあり、10分以上かかった。
+2. **JDKがもう1つ増える**: brewのmavenは `openjdk` に依存するため、**Homebrew版のJDKが別途インストールされる**。手元は現在JDK 25が1つだけの状態なので、どのJDKでビルドされているか分かりにくくなる可能性がある。
+
+**この演習にbrewは不要**（①で足りる）。day1のTERASOLUNA生成（`mvn archetype:generate`）のようにプロジェクト外で`mvn`が要る場面だけ、②のパスを直接使うか、brewを入れる。
+
+> 失敗の教訓: `brew install maven 2>&1 | tail -5` のように**パイプでつなぐと終了コードが `tail` のものになり、brewの失敗が0として見える**。インストールの成否は終了コードではなく `brew list <formula>` や `which` で確かめる。
+
+### ② 既存ラッパーを直接使う（最初の検証はこれで行った）
 
 studymate-aiが Maven Wrapper を使っているため、Maven本体が既にダウンロード済みだった。
 
@@ -78,7 +96,7 @@ alias mvn='~/.m2/wrapper/dists/apache-maven-3.9.16/56ba1f9f/bin/mvn'
 
 ```bash
 cd ~/git/learning-notes/onboarding-2026-10/exercises/test-drill/with-tools
-mvn test            # または上記の $MVN test
+./mvnw test         # Mavenのインストール不要。これが推奨
 ```
 
 **成功したときの実測結果**（初期状態、テスト3件）:
@@ -207,7 +225,7 @@ JDK 25 は比較的新しいため、古いバージョンだと動かないも�
 # ビルド成果物を消して最初から
 cd ~/git/learning-notes/onboarding-2026-10/exercises/test-drill/with-tools
 rm -rf target
-mvn test
+./mvnw test
 ```
 
 `target/` は `.gitignore` 済みなのでコミットされない。
