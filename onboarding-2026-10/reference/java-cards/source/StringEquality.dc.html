@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>文字列と等価性</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<x-dc>
+<helmet><style>.chip{background:#D98324}</style></helmet>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>文字列と等価性</h1><span class="chip"></span></div>
+    <div class="subtitle">==とequalsの取り違えは、Javaで一番多いバグの入口</div>
+  </div>
+
+  <div class="grid3">
+    <div class="card" style="background:#E8F1FB"><div class="card-head"><span class="num" style="background:#2F6FB0">1</span><span class="card-title">String はイミュータブル</span></div><div class="card-desc">一度作った文字列は変更できない。「変更」に見える操作は新しいStringを作っている。</div><div class="code">String s = "a";
+s = s + "b"; // 新しいStringを生成</div></div>
+    <div class="card" style="background:#FDF1E3"><div class="card-head"><span class="num" style="background:#D98324">2</span><span class="card-title">== は参照の比較</span></div><div class="card-desc">==は「同じ実体か」を見る。値が同じでも実体が違えばfalseになりうる。</div><div class="code">new String("a") ==
+  new String("a"); // false</div></div>
+    <div class="card" style="background:#E9F7EF"><div class="card-head"><span class="num" style="background:#2E9159">3</span><span class="card-title">equals は値の比較</span></div><div class="card-desc">文字列・業務オブジェクトの「中身が同じか」はequalsで比較する。</div><div class="code">"a".equals(s); // 値を比較
+<span class="cm">// null比較はこの向きが安全</span>
+"未登録".equals(owner);</div></div>
+    <div class="card" style="background:#F1EBFB"><div class="card-head"><span class="num" style="background:#7B4FC9">4</span><span class="card-title">equalsとhashCodeはセット</span></div><div class="card-desc">equalsを実装したらhashCodeも実装する。忘れるとHashSet/HashMapで別物扱いされる。</div></div>
+    <div class="card" style="background:#FCE9F3"><div class="card-head"><span class="num" style="background:#C84B8A">5</span><span class="card-title">StringBuilder</span></div><div class="card-desc">文字列をループで繰り返し連結するときは、毎回新規生成されるString連結ではなくStringBuilderを使う。</div><div class="code">StringBuilder sb = new StringBuilder();
+sb.append("a").append("b");</div></div>
+    <div class="card" style="background:#E6F6F6"><div class="card-head"><span class="num" style="background:#1F8A8A">6</span><span class="card-title">レビューの着眼点</span></div><div class="card-desc">文字列・業務オブジェクトの比較に==が使われていないか。nullが来うる側をequalsの左に書いているか。</div></div>
+  </div>
+
+  <div class="point"><span class="point-icon">💡</span><span class="point-text">==は「同じ箱か」、equalsは「中身が同じか」。業務ロジックの比較はほぼ常にequals。</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

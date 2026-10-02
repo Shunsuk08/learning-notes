@@ -1,0 +1,29 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-02T02:45:00Z"},
+  "title": "Java実行の仕組み図鑑",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1040, "title": "JDK・JRE・JVMの構造"},
+    "Execution.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1040, "title": "プログラムの実行の流れ"},
+    "Library.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 1040, "title": "外部ライブラリとMaven"},
+    "Annotation.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 1040, "title": "アノテーションの3つの用途"},
+    "Memory.dc.html": {"x": 6080, "y": 0, "w": 1440, "h": 1040, "title": "JVMのメモリ（スタックとヒープ）"},
+    "Array.dc.html": {"x": 0, "y": 1120, "w": 1440, "h": 1040, "title": "配列とArrayList"},
+    "ClassStructure.dc.html": {"x": 1520, "y": 1120, "w": 1440, "h": 1040, "title": "Javaの基本構造"},
+    "Method.dc.html": {"x": 3040, "y": 1120, "w": 1440, "h": 1040, "title": "関数・メソッドとは"},
+    "OOP.dc.html": {"x": 4560, "y": 1120, "w": 1440, "h": 1040, "title": "オブジェクト指向の大事なとこ"},
+    "SOLID.dc.html": {"x": 0, "y": 2240, "w": 1440, "h": 1040, "title": "SOLIDって？"},
+    "Types.dc.html": {"x": 1520, "y": 2240, "w": 1440, "h": 1040, "title": "型システムとキャスト"},
+    "ControlFlow.dc.html": {"x": 3040, "y": 2240, "w": 1440, "h": 1040, "title": "演算子と制御構文"},
+    "StringEquality.dc.html": {"x": 4560, "y": 2240, "w": 1440, "h": 1040, "title": "文字列と等価性"},
+    "Exceptions.dc.html": {"x": 0, "y": 3360, "w": 1440, "h": 1040, "title": "例外処理"},
+    "NullSafety.dc.html": {"x": 1520, "y": 3360, "w": 1440, "h": 1040, "title": "null安全性とOptional"},
+    "Collections.dc.html": {"x": 3040, "y": 3360, "w": 1440, "h": 1040, "title": "コレクションの使い分け"},
+    "Interface.dc.html": {"x": 4560, "y": 3360, "w": 1440, "h": 1040, "title": "インターフェースと抽象クラス"}
+  },
+  "order": ["Main.dc.html", "Execution.dc.html", "Library.dc.html", "Annotation.dc.html", "Memory.dc.html", "Array.dc.html", "ClassStructure.dc.html", "Method.dc.html", "OOP.dc.html", "SOLID.dc.html", "Types.dc.html", "ControlFlow.dc.html", "StringEquality.dc.html", "Exceptions.dc.html", "NullSafety.dc.html", "Collections.dc.html", "Interface.dc.html"],
+  "notes": {},
+  "designSystems": []
+}

@@ -3,36 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title>型システムとキャスト</title>
-<style>
-body{margin:0}
-.poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:24px}
-.title-row{display:flex;align-items:center;justify-content:center;gap:16px}
-.title-row h1{margin:0;font-size:40px;font-weight:800;letter-spacing:.02em;color:#1C2430}
-.chip{width:14px;height:14px;border-radius:4px}
-.subtitle{text-align:center;color:#5B6572;font-size:16px;margin-top:-10px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;flex:1}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;flex:1}
-.card{border-radius:18px;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
-.card-head{display:flex;align-items:center;gap:10px}
-.num{width:30px;height:30px;border-radius:999px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
-.card-title{font-size:18px;font-weight:800}
-.card-desc{font-size:13.5px;color:#3D4450;line-height:1.55}
-.code{background:#1C2430;color:#E8ECF2;border-radius:10px;padding:10px 12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.6;white-space:pre;margin-top:auto}
-.kw{color:#7DD3D3}
-.str{color:#F0C674}
-.cm{color:#8A93A0}
-.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
-.tbl th{background:#1C2430;color:#F4F6F9;padding:6px 10px;text-align:left;font-weight:700}
-.tbl td{padding:6px 10px;border-bottom:1px solid #E3E6EB}
-.point{background:#1C2430;border-radius:16px;padding:16px 26px;display:flex;align-items:center;gap:14px}
-.point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
-.point-text{color:#F4F6F9;font-size:16px;font-weight:700}
-.badge{font-size:11px;font-weight:700;color:#5B6572;background:#FFFFFFAA;display:inline-block;padding:2px 10px;border-radius:999px;width:fit-content}
-.chip{background:#C84B8A}
-</style>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
+<x-dc>
+<helmet><style>.chip{background:#C84B8A}</style></helmet>
 <div class="poster">
   <div>
     <div class="title-row"><span class="chip"></span><h1>型システムとキャスト</h1><span class="chip"></span></div>
@@ -60,5 +36,9 @@ new BigDecimal("0.1")
 
   <div class="point"><span class="point-icon">💡</span><span class="point-text">「数値がおかしい」バグの多くは型の取り違え。金額はBigDecimal、比較はcompareTo、が基本。</span></div>
 </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
 </body>
 </html>

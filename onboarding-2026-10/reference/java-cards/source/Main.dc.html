@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>JDK・JRE・JVMの構造</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <style>
 body{margin:0}
 .poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:26px}
@@ -32,8 +37,7 @@ body{margin:0}
 .point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
 .point-text{color:#F4F6F9;font-size:16px;font-weight:700}
 </style>
-</head>
-<body>
+</helmet>
 <div class="poster">
   <div>
     <div class="title-row"><span class="chip"></span><h1>JDK・JRE・JVM の構造</h1><span class="chip"></span></div>
@@ -82,5 +86,11 @@ body{margin:0}
     <span class="point-text">JDK ⊃ JRE ⊃ JVM。開発するならJDK。実行環境は「JRE相当（JVM＋標準ライブラリ）」があればよい。</span>
   </div>
 </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
 </body>
 </html>

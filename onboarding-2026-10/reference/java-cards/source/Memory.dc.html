@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>JVMのメモリ（スタックとヒープ）</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<x-dc>
+<helmet><style>
+.chip{background:#5B5D80}
+.mem{display:flex;gap:24px;align-items:stretch;justify-content:center}
+.area{border-radius:16px;padding:16px 20px;min-width:360px;display:flex;flex-direction:column;gap:8px}
+.area-title{font-weight:800;font-size:16px}
+.frame{background:#FFFFFF;border:2px solid #9BBEDD;border-radius:10px;padding:8px 12px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+.obj{background:#FFFFFF;border:2px solid #E7B274;border-radius:10px;padding:8px 12px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+.ref{align-self:center;font-size:14px;font-weight:700;color:#5B6572;text-align:center}
+</style></helmet>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>JVM のメモリ（スタックとヒープ）</h1><span class="chip"></span></div>
+    <div class="subtitle">変数に入っているのは「実体」か「参照」か、を絵で掴む</div>
+  </div>
+
+  <div class="mem">
+    <div class="area" style="background:#E8F1FB">
+      <div class="area-title" style="color:#2F6FB0">スタック（スレッドごとに1本）</div>
+      <div class="frame">main() のフレーム<br>int count = 3<br>Vehicle car = ●</div>
+      <div class="frame">registerAll() のフレーム<br>int total = 0</div>
+    </div>
+    <div class="ref">● 参照<br>────→</div>
+    <div class="area" style="background:#FDF1E3">
+      <div class="area-title" style="color:#D98324">ヒープ（全スレッドで共有）</div>
+      <div class="obj">Vehicle オブジェクト<br>plateNo = "品川1"</div>
+      <div class="obj">TaxService（Springのbean）<br>※1個を全リクエストが共有</div>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="card" style="background:#E8F1FB"><div class="card-head"><span class="num" style="background:#2F6FB0">1</span><span class="card-title">スタック</span></div><div class="card-desc">メソッドを呼ぶたびにフレームが積まれ、終わると消える。ローカル変数（プリミティブの値・参照の値）が入る。</div></div>
+    <div class="card" style="background:#FDF1E3"><div class="card-head"><span class="num" style="background:#D98324">2</span><span class="card-title">ヒープ</span></div><div class="card-desc">newで作ったオブジェクト本体が置かれる。どこからも参照されなくなるとGCが回収する。</div></div>
+    <div class="card" style="background:#E9F7EF"><div class="card-head"><span class="num" style="background:#2E9159">3</span><span class="card-title">Javaは常に値渡し</span></div><div class="card-desc">参照型は「参照の値」がコピーされる。中身の変更は呼び出し元に見えるが、再代入は見えない。</div><div class="code">void change(List&lt;String&gt; l, String s) {
+  l.add("x");   <span class="cm">// 呼び出し元に見える</span>
+  s = s + "1";  <span class="cm">// 呼び出し元は変わらない</span>
+}</div></div>
+    <div class="card" style="background:#F1EBFB"><div class="card-head"><span class="num" style="background:#7B4FC9">4</span><span class="card-title">共有と並行性</span></div><div class="card-desc">Springのbeanは既定でシングルトン（1個）。複数リクエストのスレッドが同じオブジェクトを使うので、フィールドに処理中の値を持つと他人の値と混ざる。staticも同じ。</div></div>
+    <div class="card" style="background:#FCE9F3"><div class="card-head"><span class="num" style="background:#C84B8A">5</span><span class="card-title">2種類のメモリ不足</span></div><div class="card-desc">StackOverflowError：再帰が深すぎてスタックが溢れる。OutOfMemoryError：ヒープ不足（大量データを一度にListに読み込む等）。</div></div>
+    <div class="card" style="background:#E6F6F6"><div class="card-head"><span class="num" style="background:#1F8A8A">6</span><span class="card-title">レビューの着眼点</span></div><div class="card-desc">beanのフィールドに状態を持っていないか。10万件を一度にメモリに載せていないか（ページング・ストリーム処理）。</div></div>
+  </div>
+
+  <div class="point"><span class="point-icon">💡</span><span class="point-text">変数に入っているのは参照。「その実体を誰と共有しているか」を意識すると、値渡し・並行性・GCが一本の線で繋がる。</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>
