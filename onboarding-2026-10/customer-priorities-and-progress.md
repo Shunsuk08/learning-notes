@@ -14,7 +14,7 @@
 
 | # | 項目 | 学習目的（会社が重視する理由） | 教材 | 進捗 |
 |---|---|---|---|---|
-| 1 | 結合試験・総合試験推進 | 管理者視点獲得 | [day1 §1](day1-subleader-and-setup.md#1-結合試験総合試験推進) | 未着手 |
+| 1 | 結合試験・総合試験推進 | 管理者視点獲得 | [day1 §1](day1-subleader-and-setup.md#1-結合試験総合試験推進) ＋ [hands-on-01](hands-on-01-test-spec-and-execution.md) | 進行中 |
 | 2 | 品質管理の基本 | PM補佐・リーダー対応 | [day1 §2](day1-subleader-and-setup.md#2-品質管理の基本) | 未着手 |
 | 3 | 進捗管理・課題管理 | チーム運営スキル強化 | [day1 §3](day1-subleader-and-setup.md#3-進捗管理課題管理) | 未着手 |
 
