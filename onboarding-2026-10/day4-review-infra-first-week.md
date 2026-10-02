@@ -73,6 +73,7 @@
 > 会社資料の教材: JUnit5 User Guide、書籍『JUnit実践入門』、Spring Boot Test公式ガイド
 > - [JUnit User Guide（公式）](https://docs.junit.org/current/user-guide/)（「Writing Tests」の章だけ）
 > - [JSTQB Foundation Level シラバス（無料PDF）](https://jstqb.jp/dl/JSTQB-SyllabusFoundation_VersionV40.J02.pdf) の「同値分割」「境界値分析」の節
+> **ハンズオン（スタブ・モックを手書き→Mockito、カバレッジをJaCoCoで測る）**: [hands-on-02-stub-mock-coverage.md](hands-on-02-stub-mock-coverage.md)
 
 ### テストケースの作り方
 

@@ -28,7 +28,7 @@
 
 22項目それぞれ「会社が何を期待しているか」の一覧と、項目ごとの進捗チェックリスト: [customer-priorities-and-progress.md](customer-priorities-and-progress.md)
 
-項目1の深掘りハンズオン（試験仕様書の標準フォーマット＋実際に手を動かして試験する）: [hands-on-01-test-spec-and-execution.md](hands-on-01-test-spec-and-execution.md)
+ハンズオン: [01 試験仕様書の標準フォーマット＋実際に試験する](hands-on-01-test-spec-and-execution.md)（項目1） / [02 スタブ・モックとカバレッジ（何ステップ通るか）](hands-on-02-stub-mock-coverage.md)（項目1・17、JDKだけで始められる）
 
 ## 不安ごとの対策
 
