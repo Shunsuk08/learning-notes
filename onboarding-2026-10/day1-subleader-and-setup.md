@@ -45,6 +45,7 @@
 > 会社資料の教材: 『ソフトウェアテスト技法ドリル』『基礎から学ぶソフトウェアテスト』、JSTQB Foundationシラバス
 > **書籍の代わり**: 下の要約 ＋ [JSTQB Foundation Level シラバス 日本語版（無料PDF）](https://jstqb.jp/dl/JSTQB-SyllabusFoundation_VersionV40.J02.pdf) の「テストレベル」「テストの管理」の章だけ
 > **ハンズオン（試験仕様書の標準フォーマット＋実際に手を動かして試験する）**: [hands-on-01-test-spec-and-execution.md](hands-on-01-test-spec-and-execution.md)
+> **深掘り**: [04 フォーマット・自動テスト・AI活用](reading/04-test-formats-and-automation.md)／[05 単体・結合・総合の境界](reading/05-test-levels-boundary.md)（毎回迷うところ）
 
 ### 試験の種類（何を確かめるか）
 
@@ -89,6 +90,7 @@
 
 > 会社資料の教材: 『PMBOKガイド』『SQuBOK』
 > **書籍の代わり**: 下の要約 ＋ [IPA ソフトウェア開発 分析データ集 2022（無料PDF）](https://www.ipa.go.jp/digital/software-survey/metrics/hjuojm000000c6it-att/000102171.pdf) の「テスト密度」「不具合密度」の章だけ眺める
+> **深掘り**: [06 テスト結果の分析・用語集](reading/06-test-metrics-and-glossary.md)（基準値の相場観・バグ曲線の読み方・会議での説明の型・用語辞書）
 
 ### 品質は「作り込む」と「見つける」の2つ
 
