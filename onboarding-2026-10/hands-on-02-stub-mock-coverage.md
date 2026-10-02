@@ -94,14 +94,12 @@ java CoverageDrill.java
 
 ### 2-1. 準備
 
-Mavenが要る。未導入なら:
+Mavenが要る。**環境構築の手順・ハマりどころ・検証済みバージョンは [exercises/test-drill/SETUP.md](exercises/test-drill/SETUP.md) にまとめてある**（brewが終わらないときの回避策、Mockitoのエージェント指定、カバレッジが0%になる罠など）。
 
 ```bash
-brew install maven     # 時間がかかる場合あり
+brew install maven     # 時間がかかる場合あり。終わらないならSETUP.mdの②へ
 mvn -v
 ```
-
-> 手元には studymate-ai が使った Maven Wrapper が既にある（`~/.m2/wrapper/dists/apache-maven-3.9.16/.../bin/mvn`）。brewが終わらないときはこれを直接呼んでもよい。
 
 ### 2-2. 実行
 
