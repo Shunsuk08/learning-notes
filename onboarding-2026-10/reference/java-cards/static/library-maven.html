@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>外部ライブラリとMaven</title>
+<style>
+body{margin:0}
+.poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:24px}
+.title-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.title-row h1{margin:0;font-size:40px;font-weight:800;letter-spacing:.02em;color:#1C2430}
+.chip{width:14px;height:14px;border-radius:4px;background:#1F8A8A}
+.subtitle{text-align:center;color:#5B6572;font-size:16px;margin-top:-10px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{border-radius:18px;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
+.card-head{display:flex;align-items:center;gap:10px}
+.num{width:30px;height:30px;border-radius:999px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.card-title{font-size:19px;font-weight:800}
+.card-desc{font-size:14px;color:#3D4450;line-height:1.5}
+.code{background:#1C2430;color:#E8ECF2;border-radius:10px;padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.55;white-space:pre;margin-top:4px}
+.tag{color:#7DD3D3}
+.str{color:#F0C674}
+.deps-row{display:flex;gap:18px;flex:1}
+.deps-card{flex:1;border-radius:18px;padding:18px 22px;background:#1C2430;display:flex;flex-direction:column;gap:8px}
+.deps-card .card-title{color:#F4F6F9}
+.chain{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:700;color:#3D4450;margin-top:6px}
+.chip2{background:#FFFFFF;border:2px solid #7B4FC9;color:#7B4FC9;border-radius:999px;padding:4px 12px}
+.point{background:#1C2430;border-radius:16px;padding:16px 26px;display:flex;align-items:center;gap:14px}
+.point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
+.point-text{color:#F4F6F9;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>外部ライブラリと Maven</h1><span class="chip"></span></div>
+    <div class="subtitle">手動管理が無理になる理由と、ビルドツールが解決すること</div>
+  </div>
+
+  <div class="grid">
+    <div class="card" style="background:#E6F6F6">
+      <div class="card-head"><span class="num" style="background:#1F8A8A">1</span><span class="card-title">外部ライブラリとは</span></div>
+      <div class="card-desc">標準ライブラリではなく、誰かが開発してインターネット上に公開しているライブラリ。中身は標準ライブラリと同じく、コンパイル済みclassファイルの集まり（jar）。</div>
+    </div>
+    <div class="card" style="background:#E8F1FB">
+      <div class="card-head"><span class="num" style="background:#2F6FB0">2</span><span class="card-title">リポジトリ</span></div>
+      <div class="card-desc">外部ライブラリを保存・公開しているサイト。Javaでは Maven Central が最も有名で、ほとんどの場合これを使う。</div>
+    </div>
+  </div>
+
+  <div class="card" style="background:#FDF1E3">
+    <div class="card-head"><span class="num" style="background:#D98324">3</span><span class="card-title">水移的依存（芋づる式の依存）</span></div>
+    <div class="card-desc">ライブラリAがライブラリBを必要とする、という連鎖。高度なライブラリほどこの連鎖が多く、手作業での管理は現実的にほぼ不可能。</div>
+    <div class="chain">
+      <span class="chip2">自分のアプリ</span>→<span class="chip2">SLF4J Simple</span>→<span class="chip2">SLF4J API</span>→<span class="chip2">…さらに依存</span>
+    </div>
+  </div>
+
+  <div class="deps-row">
+    <div class="deps-card">
+      <div class="card-head"><span class="num" style="background:#7B4FC9">4</span><span class="card-title">ビルドツールの2大機能</span></div>
+      <div class="card-desc" style="color:#C6CCD6">① タスクランナー：コンパイル・テストなど複数コマンドをまとめて実行<br>② 依存関係管理：使いたいライブラリを書くだけで、水移的依存も自動解決・ダウンロード</div>
+    </div>
+    <div class="deps-card" style="flex:1.2">
+      <div class="card-title" style="color:#F4F6F9;font-size:15px">pom.xml（Mavenの設定ファイル）</div>
+      <div class="code">&lt;<span class="tag">dependencies</span>&gt;
+  &lt;<span class="tag">dependency</span>&gt;
+    &lt;<span class="tag">groupId</span>&gt;org.slf4j&lt;/<span class="tag">groupId</span>&gt;
+    &lt;<span class="tag">artifactId</span>&gt;slf4j-api&lt;/<span class="tag">artifactId</span>&gt;
+    &lt;<span class="tag">version</span>&gt;2.0.17&lt;/<span class="tag">version</span>&gt;
+  &lt;/<span class="tag">dependency</span>&gt;
+&lt;/<span class="tag">dependencies</span>&gt;</div>
+    </div>
+  </div>
+
+  <div class="point">
+    <span class="point-icon">💡</span>
+    <span class="point-text">ライブラリを手動DLするのは非現実的。pom.xmlにdependenciesを書けば、芋づる式の依存も自動で解決してくれる。</span>
+  </div>
+</div>
+</body>
+</html>

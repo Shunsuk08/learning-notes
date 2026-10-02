@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>配列とArrayList</title>
+<style>
+body{margin:0}
+.poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:24px}
+.title-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.title-row h1{margin:0;font-size:40px;font-weight:800;letter-spacing:.02em;color:#1C2430}
+.chip{width:14px;height:14px;border-radius:4px}
+.subtitle{text-align:center;color:#5B6572;font-size:16px;margin-top:-10px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;flex:1}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;flex:1}
+.card{border-radius:18px;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
+.card-head{display:flex;align-items:center;gap:10px}
+.num{width:30px;height:30px;border-radius:999px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.card-title{font-size:18px;font-weight:800}
+.card-desc{font-size:13.5px;color:#3D4450;line-height:1.55}
+.code{background:#1C2430;color:#E8ECF2;border-radius:10px;padding:10px 12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.6;white-space:pre;margin-top:auto}
+.kw{color:#7DD3D3}
+.str{color:#F0C674}
+.cm{color:#8A93A0}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
+.tbl th{background:#1C2430;color:#F4F6F9;padding:6px 10px;text-align:left;font-weight:700}
+.tbl td{padding:6px 10px;border-bottom:1px solid #E3E6EB}
+.point{background:#1C2430;border-radius:16px;padding:16px 26px;display:flex;align-items:center;gap:14px}
+.point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
+.point-text{color:#F4F6F9;font-size:16px;font-weight:700}
+.badge{font-size:11px;font-weight:700;color:#5B6572;background:#FFFFFFAA;display:inline-block;padding:2px 10px;border-radius:999px;width:fit-content}
+.chip{background:#2F6FB0}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>配列と ArrayList</h1><span class="chip"></span></div>
+    <div class="subtitle">同じ「複数のデータをまとめる」でも、使いどころが違う</div>
+  </div>
+  <div class="grid4">
+    <div class="card" style="background:#E8F1FB"><div class="card-head"><span class="num" style="background:#2F6FB0">1</span><span class="card-title">配列とは</span></div><div class="card-desc">同じ型のデータを連続した領域にまとめる、最も基本的な仕組み。</div><div class="code">int[] numbers =
+  { 10, 20, 30 };</div></div>
+    <div class="card" style="background:#E9F7EF"><div class="card-head"><span class="num" style="background:#2E9159">2</span><span class="card-title">ArrayList とは</span></div><div class="card-desc">配列のように使える、サイズが自動で伸び縮みするリスト。</div><div class="code">List&lt;Integer&gt; nums
+  = new ArrayList&lt;&gt;();</div></div>
+    <div class="card" style="background:#FDF1E3"><div class="card-head"><span class="num" style="background:#D98324">3</span><span class="card-title">宣言</span></div><div class="card-desc">型を指定して変数を作る。ArrayListは要素の型を&lt;&gt;で指定（ジェネリクス）。</div><div class="code">int[] a;
+List&lt;Integer&gt; b;</div></div>
+    <div class="card" style="background:#F1EBFB"><div class="card-head"><span class="num" style="background:#7B4FC9">4</span><span class="card-title">初期化</span></div><div class="card-desc">配列はサイズ固定で一気に作る。ArrayListはnewしてから追加していく。</div><div class="code">a = new int[3];
+b.add(10); b.add(20);</div></div>
+    <div class="card" style="background:#FCE9F3"><div class="card-head"><span class="num" style="background:#C84B8A">5</span><span class="card-title">要素アクセス</span></div><div class="card-desc">どちらも0から始まるインデックスでアクセスする。</div><div class="code">int x = a[0];
+int y = b.get(0);</div></div>
+    <div class="card" style="background:#E6F6F6"><div class="card-head"><span class="num" style="background:#1F8A8A">6</span><span class="card-title">要素数の取得</span></div><div class="card-desc">配列はフィールド、ArrayListはメソッド。ここが混同しやすい。</div><div class="code">int n1 = a.length;
+int n2 = b.size();</div></div>
+    <div class="card" style="background:#E8F1FB"><div class="card-head"><span class="num" style="background:#2F6FB0">7</span><span class="card-title">多次元配列</span></div><div class="card-desc">配列の中に配列を入れる。行×列のような表形式データに使う。</div><div class="code">int[][] m = {
+  {1,2,3},{4,5,6}
+};</div></div>
+    <div class="card" style="background:#F4F4FA"><div class="card-head"><span class="num" style="background:#5B5D80">8</span><span class="card-title">使い分けの目安</span></div>
+      <table class="tbl"><tr><th>項目</th><th>配列</th><th>List</th></tr>
+      <tr><td>サイズ</td><td>固定</td><td>可変</td></tr>
+      <tr><td>速度</td><td>速い</td><td>やや遅い</td></tr>
+      <tr><td>追加削除</td><td>不可</td><td>容易</td></tr></table>
+    </div>
+  </div>
+  <div class="point"><span class="point-icon">💡</span><span class="point-text">配列は「シンプルで高速・サイズ固定」、Listは「柔軟・サイズ可変」。業務コードでは可変長が多いので基本はList。</span></div>
+</div>
+</body>
+</html>

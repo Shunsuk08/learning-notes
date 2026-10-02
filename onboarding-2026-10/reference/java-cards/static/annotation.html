@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>アノテーションの3つの用途</title>
+<style>
+body{margin:0}
+.poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:22px}
+.title-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.title-row h1{margin:0;font-size:40px;font-weight:800;letter-spacing:.02em;color:#1C2430}
+.chip{width:14px;height:14px;border-radius:4px;background:#7B4FC9}
+.subtitle{text-align:center;color:#5B6572;font-size:16px;margin-top:-10px}
+.col{display:flex;gap:18px;flex:1}
+.card{border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-head{display:flex;align-items:center;gap:10px}
+.num{width:32px;height:32px;border-radius:999px;color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
+.card-title{font-size:18px;font-weight:800}
+.who{font-size:12px;font-weight:700;color:#5B6572;background:#FFFFFFAA;display:inline-block;padding:2px 10px;border-radius:999px;width:fit-content}
+.card-desc{font-size:13.5px;color:#3D4450;line-height:1.55}
+.code{background:#1C2430;color:#E8ECF2;border-radius:10px;padding:10px 12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.6;white-space:pre;margin-top:auto}
+.at{color:#7DD3D3}
+.cm{color:#8A93A0}
+.point{background:#1C2430;border-radius:16px;padding:16px 26px;display:flex;align-items:center;gap:14px}
+.point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
+.point-text{color:#F4F6F9;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>アノテーションの3つの用途</h1><span class="chip"></span></div>
+    <div class="subtitle">@マークだけ見ても分からない理由は、「誰が読み取るか」が3通りあるから</div>
+  </div>
+
+  <div class="col">
+    <div class="card" style="background:#E8F1FB">
+      <div class="card-head"><span class="num" style="background:#2F6FB0">1</span><span class="card-title">情報提供</span></div>
+      <div class="who">読む人：開発者・IDE</div>
+      <div class="card-desc">ソースコードを見る人への注釈。プログラムの動作には影響しない。IDEが警告表示などの独自機能を付けることもある。</div>
+      <div class="code"><span class="cm">// 打ち消し線＋警告が出るだけ</span>
+<span class="at">@Deprecated</span>
+void oldMethod() { ... }</div>
+    </div>
+    <div class="card" style="background:#FDF1E3">
+      <div class="card-head"><span class="num" style="background:#D98324">2</span><span class="card-title">コンパイラによる利用</span></div>
+      <div class="who">読む人：コンパイラ</div>
+      <div class="card-desc">アノテーションプロセッサがソースを解析し、classファイルにコードを追加・修正する。ソースには無いメソッドが class 側にだけ存在することがある（例：Lombok）。</div>
+      <div class="code"><span class="at">@Getter</span>
+class User {
+  String name;
+}
+<span class="cm">// classには getName() が自動追加</span></div>
+    </div>
+    <div class="card" style="background:#F1EBFB">
+      <div class="card-head"><span class="num" style="background:#7B4FC9">3</span><span class="card-title">プログラムによる利用</span></div>
+      <div class="who">読む人：実行時（リフレクション）</div>
+      <div class="card-desc">実行中にリフレクションでアノテーションを検査し、動作を変える。型安全性が落ちるため慎重な利用が必要。SpringのDIコンテナが典型例。</div>
+      <div class="code"><span class="at">@Component</span>
+class TaxService { ... }
+<span class="cm">// DIコンテナが自動でnew&管理</span></div>
+    </div>
+  </div>
+
+  <div class="point">
+    <span class="point-icon">💡</span>
+    <span class="point-text">@アノテーションだけ見ても動きは分からない。「IDE／コンパイラ／実行時リフレクション」のどれが読み取るかで意味が決まる。</span>
+  </div>
+</div>
+</body>
+</html>

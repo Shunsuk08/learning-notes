@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>JDK・JRE・JVMの構造</title>
+<style>
+body{margin:0}
+.poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:26px}
+.title-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.title-row h1{margin:0;font-size:40px;font-weight:800;letter-spacing:.02em;color:#1C2430}
+.chip{width:14px;height:14px;border-radius:4px;background:#2F6FB0}
+.subtitle{text-align:center;color:#5B6572;font-size:16px;margin-top:-10px}
+.nest-wrap{display:flex;justify-content:center}
+.jdk-box{border:3px solid #8E8FA6;background:#F4F4FA;border-radius:20px;padding:22px 28px;display:flex;gap:20px;align-items:stretch}
+.jdk-label{position:relative}
+.box-tag{position:absolute;top:-14px;left:16px;background:#5B5D80;color:#fff;font-size:13px;font-weight:700;padding:3px 12px;border-radius:999px}
+.jre-box{border:3px solid #2F6FB0;background:#E8F1FB;border-radius:16px;padding:26px 24px 18px;display:flex;gap:14px;position:relative;min-width:520px}
+.jre-tag{background:#2F6FB0}
+.devtool-box{border:3px solid #D98324;background:#FDF1E3;border-radius:16px;padding:26px 20px 18px;position:relative;min-width:180px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.devtool-tag{background:#D98324}
+.mini{background:#FFFFFF;border:2px solid #9BBEDD;border-radius:10px;padding:10px 14px;font-size:14px;font-weight:700;text-align:center;color:#1C2430}
+.mini-sub{font-size:11px;font-weight:500;color:#5B6572;margin-top:2px}
+.devmini{background:#FFFFFF;border:2px solid #E7B274;border-radius:8px;padding:6px 10px;font-size:13px;font-weight:700;text-align:center;color:#1C2430}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;flex:1}
+.card{border-radius:18px;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
+.card-head{display:flex;align-items:center;gap:10px}
+.num{width:30px;height:30px;border-radius:999px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.card-title{font-size:19px;font-weight:800}
+.card-desc{font-size:14px;color:#3D4450;line-height:1.5}
+.code{background:#1C2430;color:#E8ECF2;border-radius:10px;padding:10px 12px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;white-space:pre}
+.point{background:#1C2430;border-radius:16px;padding:16px 26px;display:flex;align-items:center;gap:14px}
+.point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
+.point-text{color:#F4F6F9;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>JDK・JRE・JVM の構造</h1><span class="chip"></span></div>
+    <div class="subtitle">「開発するのに何がいるの？」を1枚で整理する</div>
+  </div>
+
+  <div class="nest-wrap">
+    <div class="jdk-box">
+      <span class="box-tag">JDK（開発に必要）</span>
+      <div class="jre-box">
+        <span class="box-tag jre-tag">JRE（動かすのに必要）</span>
+        <div class="mini">JVM<div class="mini-sub">Javaの仮想マシン</div></div>
+        <div class="mini">java コマンド<div class="mini-sub">JVMを起動する</div></div>
+        <div class="mini">標準ライブラリ<div class="mini-sub">いつも使う機能</div></div>
+      </div>
+      <div class="devtool-box">
+        <span class="box-tag devtool-tag">開発ツール</span>
+        <div class="devmini">javac（コンパイラ）</div>
+        <div class="devmini">jar（圧縮）</div>
+        <div class="devmini">javadoc（文書生成）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card" style="background:#F4F4FA">
+      <div class="card-head"><span class="num" style="background:#5B5D80">1</span><span class="card-title">JDK とは</span></div>
+      <div class="card-desc">JRE と開発ツール群を束ねたもの。「Javaで開発する」なら最低限これが要る。</div>
+    </div>
+    <div class="card" style="background:#E8F1FB">
+      <div class="card-head"><span class="num" style="background:#2F6FB0">2</span><span class="card-title">JRE とは</span></div>
+      <div class="card-desc">JVM・javaコマンド・標準ライブラリの3点セット。「動かすだけ」ならこれで足りる。</div>
+    </div>
+    <div class="card" style="background:#FDF1E3">
+      <div class="card-head"><span class="num" style="background:#D98324">3</span><span class="card-title">開発ツールの中身</span></div>
+      <div class="card-desc">javac（.java→.classにコンパイル）、jar（圧縮）、javadoc（ドキュメント生成）。普段使うのは主にjavac。</div>
+    </div>
+    <div class="card" style="background:#E9F7EF">
+      <div class="card-head"><span class="num" style="background:#2E9159">4</span><span class="card-title">標準ライブラリの正体</span></div>
+      <div class="card-desc">Java言語本体の機能はごくわずか（if文や四則演算程度）。System.out.printlnやListなど便利機能は、全部ここに入っているクラスファイル。</div>
+    </div>
+  </div>
+
+  <div class="point">
+    <span class="point-icon">💡</span>
+    <span class="point-text">JDK ⊃ JRE ⊃ JVM。開発するならJDK、配ったアプリを動かすだけならJREで足りる。</span>
+  </div>
+</div>
+</body>
+</html>

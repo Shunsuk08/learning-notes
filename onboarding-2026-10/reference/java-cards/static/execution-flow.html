@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>プログラムの実行の流れ</title>
+<style>
+body{margin:0}
+.poster{width:1440px;height:1040px;box-sizing:border-box;background:#FFFFFF;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;color:#23282E;padding:52px 64px;display:flex;flex-direction:column;gap:26px}
+.title-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.title-row h1{margin:0;font-size:40px;font-weight:800;letter-spacing:.02em;color:#1C2430}
+.chip{width:14px;height:14px;border-radius:4px;background:#C84B8A}
+.subtitle{text-align:center;color:#5B6572;font-size:16px;margin-top:-10px}
+.flow{display:flex;align-items:center;justify-content:center;gap:10px}
+.fbox{border-radius:14px;padding:14px 18px;text-align:center;min-width:120px}
+.fbox .t{font-weight:800;font-size:15px}
+.fbox .s{font-size:11.5px;color:#5B6572;margin-top:4px}
+.arrow{font-size:20px;color:#9AA2AD;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;flex:1}
+.card{border-radius:18px;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
+.card-head{display:flex;align-items:center;gap:10px}
+.num{width:30px;height:30px;border-radius:999px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.card-title{font-size:19px;font-weight:800}
+.card-desc{font-size:14px;color:#3D4450;line-height:1.5}
+.point{background:#1C2430;border-radius:16px;padding:16px 26px;display:flex;align-items:center;gap:14px}
+.point-icon{width:30px;height:30px;border-radius:999px;background:#F5C543;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px}
+.point-text{color:#F4F6F9;font-size:16px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div>
+    <div class="title-row"><span class="chip"></span><h1>プログラムの実行の流れ</h1><span class="chip"></span></div>
+    <div class="subtitle">.java を書いてから、動くまでに何が起きているか</div>
+  </div>
+
+  <div class="flow">
+    <div class="fbox" style="background:#E8F1FB;border:2px solid #2F6FB0"><div class="t">Demo.java</div><div class="s">人間が読めるソース</div></div>
+    <span class="arrow">→</span>
+    <div class="fbox" style="background:#1C2430"><div class="t" style="color:#F4F6F9">javac</div><div class="s" style="color:#AEB6C2">コンパイラ</div></div>
+    <span class="arrow">→</span>
+    <div class="fbox" style="background:#FDF1E3;border:2px solid #D98324"><div class="t">Demo.class</div><div class="s">バイトコード</div></div>
+    <span class="arrow">→</span>
+    <div class="fbox" style="background:#F1EBFB;border:2px dashed #7B4FC9"><div class="t">(任意) jar</div><div class="s">classの束</div></div>
+    <span class="arrow">→</span>
+    <div class="fbox" style="background:#1C2430"><div class="t" style="color:#F4F6F9">java</div><div class="s" style="color:#AEB6C2">起動コマンド</div></div>
+    <span class="arrow">→</span>
+    <div class="fbox" style="background:#E9F7EF;border:2px solid #2E9159"><div class="t">JVM 実行</div><div class="s">結果を出力</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card" style="background:#E8F1FB">
+      <div class="card-head"><span class="num" style="background:#2F6FB0">1</span><span class="card-title">.java → .class</span></div>
+      <div class="card-desc">javac コンパイラが、人間向けのソースコードを JVM 専用の中間言語「バイトコード」に変換する。拡張子は .class。</div>
+    </div>
+    <div class="card" style="background:#E9F7EF">
+      <div class="card-head"><span class="num" style="background:#2E9159">2</span><span class="card-title">JVMの役割① OS差異の吸収</span></div>
+      <div class="card-desc">Windows / Mac / Linux で違う部分を JVM が吸収する。同じ .class ファイルがどのOSでも同じように動く。</div>
+    </div>
+    <div class="card" style="background:#F1EBFB">
+      <div class="card-head"><span class="num" style="background:#7B4FC9">3</span><span class="card-title">JVMの役割② メモリ管理</span></div>
+      <div class="card-desc">ガベージコレクション（GC）が不要になったメモリを自動で解放。開発者が細かくメモリを意識しなくてよい。</div>
+    </div>
+    <div class="card" style="background:#FDF1E3">
+      <div class="card-head"><span class="num" style="background:#D98324">4</span><span class="card-title">jar ファイル（任意）</span></div>
+      <div class="card-desc">複数の .class をまとめて1つの圧縮ファイルにする。開発中はやらないことも多いが、リリース時はほぼ必須。</div>
+    </div>
+  </div>
+
+  <div class="point">
+    <span class="point-icon">💡</span>
+    <span class="point-text">実行の正体は、javacでバイトコードを作り、javaコマンドでJVMに渡して動かすこと。</span>
+  </div>
+</div>
+</body>
+</html>
