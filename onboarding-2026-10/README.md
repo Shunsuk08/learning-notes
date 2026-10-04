@@ -22,7 +22,7 @@
 
 教材: [day1](day1-subleader-and-setup.md) / [day2](day2-spec-analysis-copilot.md) / [day3](day3-framework-mybatis.md) / [day4](day4-review-infra-first-week.md)
 
-読み物（具体例・クイズで深掘り）: [01 サブリーダー実例ケース集](reading/01-subleader-cases.md) / [02 工数・人月とタスク管理](reading/02-effort-and-task-management.md) / [03 テスト設計（異常系・非機能）](reading/03-test-design.md) / [04 フォーマット・自動テスト・AI活用](reading/04-test-formats-and-automation.md) / [05 単体/結合/総合の境界](reading/05-test-levels-boundary.md) / [06 テスト結果の分析・用語集](reading/06-test-metrics-and-glossary.md) / [07 進捗管理の実例調査（WBS・ガント・課題管理表）](reading/07-pm-management-tools.md)
+読み物（具体例・クイズで深掘り）: [01 サブリーダー実例ケース集](reading/01-subleader-cases.md) / [02 工数・人月とタスク管理](reading/02-effort-and-task-management.md) / [03 テスト設計（異常系・非機能）](reading/03-test-design.md) / [04 フォーマット・自動テスト・AI活用](reading/04-test-formats-and-automation.md) / [05 単体/結合/総合の境界](reading/05-test-levels-boundary.md) / [06 テスト結果の分析・用語集](reading/06-test-metrics-and-glossary.md) / [07 進捗管理の実例調査（WBS・ガント・課題管理表）](reading/07-pm-management-tools.md) / [08 参画初期に起きることと初日の聞くことメモ](reading/08-joining-a-project.md)
 
 参画後の計画: [after-10-5.md](after-10-5.md)
 
